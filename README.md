@@ -65,13 +65,11 @@ When we make a MarketPrice request, the response payload is flat - consisting of
       "52WK_HIGH":214.6,
       "52WK_LOW":133.48,
 ...
-...
       "ASK":139.08,
       "ASKSIZE":5305,
       "ASK_TIM_MS":44808257,
       "ASK_TIM_NS":"12:26:48.257",
       "BID":139.02,        
-...
 ...
       "YRLOW":133.48,
       "YRLO_IND":"15M.Yr.L"
@@ -116,7 +114,6 @@ To address the above requirement, we use an Action attribute to advise the consu
           }
         },
 ...
-...
         {
           "Action": "Update",
           "Key": "MTI4LjUyQQ==",
@@ -127,7 +124,6 @@ To address the above requirement, we use an Action attribute to advise the consu
             "NO_ORD": 7,
             "LV_TIM_MS": 52690107
           },
-...
 ...
         {
           "Action": "Delete",
@@ -161,7 +157,6 @@ and so on...
           "RECORDTYPE": 113,
           "SEQNUM": 3838578,
           "RDN_EXCHD2": "LSE",
-...
 ...
           "TRD_STATUS": "N ",
           "HALT_RSN": "NH",
@@ -205,7 +200,6 @@ As explained in the basic <a href="https://developers.refinitiv.com/elektron/web
         "ACTIV_DATE": "2019-07-22",
         "LOT_SIZE_A": 1,
 ...
-...
         "ORDBK_DEPH": "FB    "
       }
     },
@@ -234,7 +228,6 @@ As explained in the basic <a href="https://developers.refinitiv.com/elektron/web
         }
       },
 ...
-...
       {
         "Action": "Add",
         "Key": "MTI1LjU2Qg==",
@@ -249,7 +242,6 @@ As explained in the basic <a href="https://developers.refinitiv.com/elektron/web
     ]
   }
 }
-...
 ...
 {
   "ID": 2,
@@ -279,7 +271,6 @@ As explained in the basic <a href="https://developers.refinitiv.com/elektron/web
         "LV_TIM_MS": 52763634
       }
     },
-...
 ...
       {
         "Action": "Add",
@@ -506,7 +497,7 @@ We then implement something similar to the previous snippet - albeit for a Treev
     * For Delete action we delete the existing row using the Key
 4. Once we have processed the Queue entries, we select the newly added / updated items in the Treeview
 
-If you look at the code for **add\_entry**** you will note that the Key value is used for ***iid*** & the first column and the actual payload fields values are applied to the remaining columns e.g.
+If you look at the code for ***add\_entry()*** you will note that the Key value is used for ***iid*** & the first column and the actual payload fields values are applied to the remaining columns e.g.
 ```python
 obView.insert("", "end", iid=k, values=(
             k, v['ORDER_PRC'], v['ORDER_SIDE'], v['ACC_SIZE'], v['NO_ORD'], v['LV_TIM_MS']))
